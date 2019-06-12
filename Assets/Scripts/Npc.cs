@@ -148,7 +148,7 @@ public class Npc : MonoBehaviour
     {
         UnityEngine.AI.NavMeshAgent nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
         yield return new WaitUntil(() => Vector3.Distance(StandardIAControl.target.position, transform.position) <= 1.5f * nav.stoppingDistance);
-        yield return new WaitForSeconds(0.4f);
+        //yield return new WaitForSeconds(0.4f);
         //enter in queue?
         if (buyBehaviour.buyState == BuyBehaviour.BuyState.END)
         {

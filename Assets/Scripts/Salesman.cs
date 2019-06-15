@@ -7,22 +7,23 @@ public class Salesman : MonoBehaviour //maybe can inherit from npc, but salesman
     public enum ShopState { OPEN, CLOSED};
     public enum BuySell { CHEAP, BALANCE, QUALITY };
 
-    [SerializeField] private ShopState shopState;
-    private ShopInventory ShopInventory;
-    [SerializeField] private List<GameObject> BuyQueue;
-    [SerializeField] private List<Transform> TransformsQueuePositition;
-    private Personality personality;
-    private SalesmanBehaviour salesmanBehaviour;
-    public BuySell buySell;
-    public WorldState.SalesmanCharacterName characterName;
-    [SerializeField] private Transform shopStartPoint;
-    [SerializeField] private Transform shopExitPoint;
-
-    public float money = 500;
-    [SerializeField] private int DaysInRedNumbers = 0;
-
     private const int DaysInRedNumbersToClose = 3;
 
+    
+    public float money = 500;
+    public BuySell buySell;
+    public WorldState.SalesmanCharacterName characterName;
+
+    [SerializeField] private ShopState shopState;
+    [SerializeField] private List<GameObject> BuyQueue;
+    [SerializeField] private List<Transform> TransformsQueuePositition;
+    [SerializeField] private Transform shopStartPoint;
+    [SerializeField] private Transform shopExitPoint;
+    [SerializeField] private int DaysInRedNumbers = 0;
+
+    private ShopInventory ShopInventory;
+    private Personality personality;
+    private SalesmanBehaviour salesmanBehaviour;
     private Dictionary<int, float> npcsRelationships;
 
     private void Awake()
@@ -45,6 +46,7 @@ public class Salesman : MonoBehaviour //maybe can inherit from npc, but salesman
     public void NextDay()
     {
         money -= ShopInventory.ShopRent;
+        BuyQueue = new List<GameObject>();
 
         if (money < 0f)
         {

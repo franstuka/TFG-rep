@@ -114,16 +114,6 @@ public class Salesman : MonoBehaviour //maybe can inherit from npc, but salesman
         
     }
 
-    public void  BuyAction(Item.ItemType itemType)
-    {
-        
-    }
-
-    public void CheckAction()
-    {
-
-    }
-
     public Transform GetShopExitPoint()
     {
         return shopExitPoint;

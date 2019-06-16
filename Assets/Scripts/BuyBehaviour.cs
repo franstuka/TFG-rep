@@ -618,7 +618,7 @@ public class BuyBehaviour : MonoBehaviour
         {
             if(MakeBuyDecision())
             {
-                buyState = BuyState.END; //has not enought money
+                buyState = BuyState.END; //has not enought money or stock
                 GetComponent<Npc>().CheckIfEndedAll();
             }              
             else

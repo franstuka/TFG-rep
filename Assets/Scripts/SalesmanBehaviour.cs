@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class SalesmanBehaviour : MonoBehaviour
 {
-    int maxFoodToBuy = 15;
-    int maxDetergentToBuy = 10;
-    int maxFridgesToBuy = 3;
-    int maxWashersToBuy = 5;
+    private const int maxFoodToBuy = 15;
+    private const int maxDetergentToBuy = 10;
+    private const int maxFridgesToBuy = 3;
+    private const int maxWashersToBuy = 5;
+
     [SerializeField] float minMoneyToBuy = 150;
-    [SerializeField] int minMoneyToBuyFrigdeAndWasher = 800;
+    [SerializeField] float minMoneyToBuyFrigdeAndWasher = 800;
     [SerializeField] float maxPercentageDifference = 0.4f;
 
     public float ResupplyShop(float money, ref ShopInventory inventory, WorldState.SalesmanCharacterName salesman)

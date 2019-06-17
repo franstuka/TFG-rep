@@ -14,18 +14,13 @@ public class BuyBehaviour : MonoBehaviour
     public const float mediumPriceRelevanceBonusScore = 4f;
     public const float highPriceRelevanceBonusScore = 10f;
 
-
     public enum BuyState { NEED_TO_BUY, GOING_TO_SEE, ON_ROUTE, ON_QUEUE, PLANNED, BLOCKED, END };
     public enum BuyPreference {CHEAP, BALANCE, QUALITY };
     public enum PriceRelevance {NONE,MEDIUM,IMPORTANT };
 
-    public float highSearchMultipleShopsProbability = 90f;
-    public float mediumSearchMultipleShopsProbability = 40f;
-    public float lowSearchMultipleShopsProbability = 10f;
     public BuyPreference buyPreference;
     public PriceRelevance priceRelevance;
 
-    public float ratioRelationshipVsBetterPriceSelection = 50f;
     public List<WorldState.SalesmanCharacterName> shopsChecked = new List<WorldState.SalesmanCharacterName>();
     public List<WorldState.SalesmanCharacterName> shopToBuy = new List<WorldState.SalesmanCharacterName>();
     public List<Item.ItemType> itemToBuyType = new List<Item.ItemType>();
@@ -341,7 +336,7 @@ public class BuyBehaviour : MonoBehaviour
         return betterScore;
     }
 
-    public WorldState.SalesmanCharacterName GetPrefferedSalesman() //for hud
+    public WorldState.SalesmanCharacterName GetPreferredSalesman() //for hud
     {
         WorldState.SalesmanCharacterName betterScore = WorldState.SalesmanCharacterName.START_ITEM;
         float bestScore = float.MinValue;
@@ -424,7 +419,7 @@ public class BuyBehaviour : MonoBehaviour
         return betterScore;
     }
 
-
+    
     private void GoToBuy()
     {
         GoToQueue(shopToBuy[0]);

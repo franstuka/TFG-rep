@@ -106,7 +106,7 @@ public class Inventory : MonoBehaviour
         return new object[] { end, qualityResult, WorldState.SalesmanCharacterName.START_ITEM }; //no food in inventory
     }
 
-    public object[] CleanCloth() // 0 Cloth state, 1 bought from
+    public object[] CleanCloth() // 0 Cloth state, 1 bought from]
     {
         if(washer == null)
             return new object[] { 0, WorldState.SalesmanCharacterName.START_ITEM };

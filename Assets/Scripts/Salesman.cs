@@ -24,7 +24,7 @@ public class Salesman : MonoBehaviour //maybe can inherit from npc, but salesman
     private ShopInventory ShopInventory;
     private Personality personality;
     private SalesmanBehaviour salesmanBehaviour;
-    private Dictionary<int, float> npcsRelationships;
+    //private Dictionary<int, float> npcsRelationships;
 
     private void Awake()
     {
@@ -34,7 +34,7 @@ public class Salesman : MonoBehaviour //maybe can inherit from npc, but salesman
 
         shopState = ShopState.OPEN;
         BuyQueue = new List<GameObject>();
-        npcsRelationships = new Dictionary<int, float>();
+        //npcsRelationships = new Dictionary<int, float>();
     }
 
     public void DayOne()
@@ -122,11 +122,6 @@ public class Salesman : MonoBehaviour //maybe can inherit from npc, but salesman
     public int GetLastPositionInQueue()
     {
         return BuyQueue.Count;
-    }
-
-    public ShopInventory GetShopInventory()
-    {
-        return ShopInventory;
     }
 
 }

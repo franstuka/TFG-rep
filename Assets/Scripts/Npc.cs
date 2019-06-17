@@ -8,21 +8,21 @@ public class Npc : MonoBehaviour
 
     private const byte maxCleanClothes = 3;
 
-    [SerializeField] private float moneyWinnedEveryDay;
-    private Personality personality;
     public float money;
     public WorldState.NPCName characterName;
-    private Inventory inventory;
-    [SerializeField] private Transform shopStartPoint;
     public byte cleanClothes;
-    
+    public Dictionary<WorldState.SalesmanCharacterName, float> salesmanRelationships;
 
+    [SerializeField] private float moneyWinnedEveryDay;
+    [SerializeField] private Transform shopStartPoint;
+
+    private Inventory inventory;
+    private Personality personality;
     private BuyBehaviour buyBehaviour;
     private SocialBehaviour socialBehaviour;
-    //public Dictionary<WorldState.NPCName, float> npcsRelationships; //not implemented
-    public Dictionary<WorldState.SalesmanCharacterName, float> salesmanRelationships;
-    
     private UnityStandardAssets.Characters.ThirdPerson.AICharacterControl StandardIAControl;
+    //public Dictionary<WorldState.NPCName, float> npcsRelationships; //not implemented
+    
 
     private void Awake()
     {

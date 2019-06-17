@@ -12,10 +12,6 @@ public class Hud : MonoBehaviour
     public TMPro.TextMeshProUGUI dayHud;
     public List<GameObject> Headers;
 
-    public void UpdateHud()
-    {
-
-    }
 
     public void UpdateSalesmanRelationshipText()
     {
@@ -23,7 +19,7 @@ public class Hud : MonoBehaviour
         {
 
             SalesmanRelationshipTextList[i].GetComponent<TMPro.TextMeshProUGUI>().text = WorldState.instance.NpcGlobalList[i].GetComponent<Npc>().GetPersonality() + ": ";
-            SalesmanRelationshipTextList[i].GetComponent<TMPro.TextMeshProUGUI>().text += WorldState.instance.NpcGlobalList[i].GetComponent<BuyBehaviour>().GetPrefferedSalesman() + ", ";
+            SalesmanRelationshipTextList[i].GetComponent<TMPro.TextMeshProUGUI>().text += WorldState.instance.NpcGlobalList[i].GetComponent<BuyBehaviour>().GetPreferredSalesman() + ", ";
             foreach (KeyValuePair<WorldState.SalesmanCharacterName,float> relationship in WorldState.instance.NpcGlobalList[i].GetComponent<Npc>().salesmanRelationships)
             {
                   SalesmanRelationshipTextList[i].GetComponent<TMPro.TextMeshProUGUI>().text += "       " + relationship.Value;

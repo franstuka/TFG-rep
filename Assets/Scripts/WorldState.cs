@@ -50,10 +50,6 @@ public class WorldState : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("1"))
-        {
-            NextDay();
-        }
         if (Input.GetKeyDown("2"))
         {
             hud.EnableOrDisableExtendedHud();

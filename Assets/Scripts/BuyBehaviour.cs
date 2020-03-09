@@ -466,7 +466,8 @@ public class BuyBehaviour : MonoBehaviour
             {        
                 if(!coroutineStarted)
                 {
-                    Debug.Log(gameObject.name + " is checking the shop");
+                    Debug.Log(gameObject.name + " is checking the shop.");
+                    WorldState.instance.hud.UpdateDebugText(gameObject.name + " is checking the shop.");
                     coroutineStarted = true;
                     StartCoroutine(SeeShop());
                 }
@@ -476,6 +477,7 @@ public class BuyBehaviour : MonoBehaviour
                 if (!coroutineStarted)
                 {
                     Debug.Log(gameObject.name + " is buying in the shop");
+                    WorldState.instance.hud.UpdateDebugText(gameObject.name + " is buying in the shop.");
                     coroutineStarted = true;
                     StartCoroutine(BuyShop());
                 }          
@@ -563,7 +565,8 @@ public class BuyBehaviour : MonoBehaviour
                     if (GetComponent<Npc>().money >= itemToBuy.itemValue)
                     {
                         //buy
-                        Debug.Log(gameObject.name + " Buy " + itemToBuy.itemType);
+                        Debug.Log(gameObject.name + " has bought " + itemToBuy.itemType + ".");
+                        WorldState.instance.hud.UpdateDebugText(gameObject.name + " has bought " + itemToBuy.itemType + ".");
                         GetComponent<Npc>().money -= itemToBuy.itemValue;
                         GetComponent<Inventory>().AddNewItem(itemToBuy);
                         WorldState.instance.SalesmanList[salesmanNum].GetComponent<ShopInventory>().ItemBought(itemToBuy);
@@ -574,6 +577,7 @@ public class BuyBehaviour : MonoBehaviour
                     else
                     {
                         Debug.Log(gameObject.name + " not enought money");
+                        WorldState.instance.hud.UpdateDebugText(gameObject.name + " not enought money.");
                         shopToBuy.RemoveAt(searchPos);
                         itemToBuyType.RemoveAt(searchPos);
                         allBought = false;
@@ -581,6 +585,7 @@ public class BuyBehaviour : MonoBehaviour
                 }
                 else
                 {
+                    WorldState.instance.hud.UpdateDebugText(gameObject.name + " item not avaible.");
                     Debug.Log(gameObject.name + " item not avaible");
                     allBought = false;
                     shopToBuy.RemoveAt(searchPos);
@@ -607,6 +612,7 @@ public class BuyBehaviour : MonoBehaviour
         else if(allBought) //all bought in this shop
         {
             Debug.Log(gameObject.name + " has bought all in this shop");
+            WorldState.instance.hud.UpdateDebugText(gameObject.name + " has bought all in this shop.");
             buyState = BuyState.PLANNED;
         }
         else
@@ -636,6 +642,7 @@ public class BuyBehaviour : MonoBehaviour
         if(shopsChecked.Count == WorldState.instance.activeSalesman) // all open shops visited
         {
             Debug.Log(gameObject.name + " is planing the buy");
+            WorldState.instance.hud.UpdateDebugText(gameObject.name + " is planing the buy.");
             if (MakeBuyDecision())
             {
                 buyState = BuyState.END;
@@ -649,6 +656,7 @@ public class BuyBehaviour : MonoBehaviour
         else if(GetComponent<Npc>().GetPersonality() == Personality.PersonalityType.PERFECTIONIST )
         {
             Debug.Log(gameObject.name + " is going to see another shop");
+            WorldState.instance.hud.UpdateDebugText(gameObject.name + " is going to see another shop.");
             buyState = BuyState.GOING_TO_SEE;
         }
         else
@@ -656,11 +664,13 @@ public class BuyBehaviour : MonoBehaviour
             if(Random.Range(0,100) > ProbabilityToSeeAnotherShop)
             {
                 Debug.Log(gameObject.name + " is going to see another shop");
+                WorldState.instance.hud.UpdateDebugText(gameObject.name + " is going to see another shop.");
                 buyState = BuyState.GOING_TO_SEE;
             }
             else
             {
                 Debug.Log(gameObject.name + " is planing the buy");
+                WorldState.instance.hud.UpdateDebugText(gameObject.name + " is planing the buy.");
                 if (MakeBuyDecision())
                 {
                     buyState = BuyState.END;

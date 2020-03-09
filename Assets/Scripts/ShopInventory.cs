@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShopInventory : MonoBehaviour
 {
     //const
-    public const float ShopRent = 35f; 
+    public float ShopRent = 35f; 
     public const float FrigdeBasePrice = 400f;
     public const float WasherBasePrice = 300f;
     public const float FoodBasePrice = 5f;

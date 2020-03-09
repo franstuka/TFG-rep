@@ -192,6 +192,7 @@ public class Npc : MonoBehaviour
         if(buyBehaviour.buyState == BuyBehaviour.BuyState.END)
         {
             Debug.Log("Go home " + gameObject.name);
+            WorldState.instance.hud.UpdateDebugText("Go home " + gameObject.name);
             GoToPosition(WorldState.instance.ShopExitPoint);
         }
     }

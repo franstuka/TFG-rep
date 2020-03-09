@@ -11,7 +11,13 @@ public class Hud : MonoBehaviour
     public TMPro.TextMeshProUGUI salesmanMoney;
     public TMPro.TextMeshProUGUI dayHud;
     public List<GameObject> Headers;
+    public TMPro.TextMeshProUGUI debugText;
+    public string[] debugInfo;
 
+    private void Awake()
+    {
+        debugInfo = new string[7];
+    }
 
     public void UpdateSalesmanRelationshipText()
     {
@@ -126,6 +132,22 @@ public class Hud : MonoBehaviour
             {
                 Headers[i].gameObject.SetActive(true);
             }
+        }
+    }
+
+    public void UpdateDebugText(string newText)
+    {
+        for (int i = debugInfo.Length - 1; i > 0 ; i--)
+        {
+            debugInfo[i] = debugInfo[i - 1];
+        }
+        debugInfo[0] = newText;
+
+        debugText.text = "";
+
+        for (int i = 0; i < debugInfo.Length; i++)
+        {
+            debugText.text += debugInfo[i] + "\n";
         }
     }
 }
